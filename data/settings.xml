@@ -1,0 +1,20 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <port>12345</port>
+        <players>
+            <p1>
+                <name>Xxxx</name>
+                <host>nnnn</host>
+            </p1>
+            <p2>
+                <name>Yyyy</name>
+                <host>mmmm</host>
+            </p2>
+            <p3>
+                <name>Zzzz</name>
+                <host>mmmm</host>
+            </p3>
+        </players>
+    </global>
+</settings>
