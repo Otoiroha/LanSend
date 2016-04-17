@@ -1,0 +1,31 @@
+# editorconfig.org
+# from https://github.com/google/web-starter-kit/blob/master/.editorconfig
+# Changed eol to crlf because of intra-mart recommendation.
+root = true
+
+# base settings
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# hidden files
+[.*]
+end_of_line = lf
+
+[_*]
+end_of_line = lf
+
+# extensions
+[*.sh]
+end_of_line = lf
+
+[*.bat]
+end_of_line = crlf
+
+[*.md]
+trim_trailing_whitespace = false
+indent_size = 4

@@ -1,0 +1,11 @@
+# vim: set ft=conf :
+node_modules/
+bower_components/
+
+conf/rake-config.yml
+target/
+gear/
+work/
+rakebld.bat
+rakecmd.bat
+data/
