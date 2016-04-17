@@ -19,7 +19,7 @@ desc 'windowerにデプロイする'
 task :cp => DIST
 config["target"].each do |target_dir|
   rule(Regexp.new(target_dir + "LanSend/.*\..*$") => [
-    proc {|taskname| taskname.sub(target_dir + "lazyMB/", "")}
+    proc {|taskname| taskname.sub(target_dir + "LanSend/", "")}
   ]) do |t|
     mkdir_p t.name.pathmap('%d')
     cp t.source, t.name
