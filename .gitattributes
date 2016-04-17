@@ -1,0 +1,38 @@
+# vim: set ft=conf :
+# すべてのテキストファイルの改行コードを正規化する
+# プロジェクトのデフォルト設定となる
+* text=auto eol=crlf
+
+# プロジェクトの設定によらず、常に特定の改行コードを利用するファイル
+# dotfiles
+.* text eol=lf
+_* text eol=lf
+# shell
+*.bat text eol=crlf
+*.sh text eol=lf
+
+csv/*.csv text -eol diff=to_utf8
+
+# Binary Files
+# executable
+*.exe binary
+# archives
+*.tar binary
+*.gz  binary
+*.zip binary
+*.jar binary
+# office files
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+# document files
+*.oxt binary
+*.pdf binary
+# picures
+*.png binary
+*.jpg binary
+*.gif binary
+
+# git archiveから除外するファイルの設定
+.gitkeep export-ignore
