@@ -48,10 +48,10 @@ windower.register_event('load',function ()
   if ( s_settings.players ~= nil ) then s_players = s_settings.players end -- load players info from settings
   
   for i, v in pairs(s_players) do
-    -- all string reset to lower
+    -- name and acc reset to lower
     v.name = v.name:lower()
-    v.host = v.host:lower()
     v.acc  = v.acc:lower()
+    -- v.host = v.host:lower() -- host name isn't reset
     -- 1st account in Host manage the Host's UDP socket.
     if (s_h2a[v.host] == nil) then
       s_h2a[v.host] = v.acc
