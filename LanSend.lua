@@ -69,7 +69,7 @@ windower.register_event('load',function ()
   for i, v in pairs(s_players) do
     if ( p.name:lower() == v.name and s_h2a[v.host] == v.acc ) then
       s_udp = socket.udp()         -- UDP socket open
-      s_udp:setsockname("*", port) -- set port
+      s_udp:setsockname("*", s_port) -- set port
       s_udp:settimeout(0)          -- time out 0 -> no bind func
       windower.send_command("LanSend RecvLoop") -- UDP tranfeered Data Recv Loop
       break
@@ -116,8 +116,8 @@ windower.register_event('addon command',function (...)
       end
     
     -- my acc is resiged [h2a] acc, and target isn't same host, use UDP to send.
-    else
-      udp:sendto(argstr, socket.dns.toip(target.host), s_port )
+    elseif ( target.host ~= nil ) then
+      s_udp:sendto(argstr, socket.dns.toip(target.host), s_port )
     end
   end
 end) -- register_event end
@@ -127,7 +127,7 @@ end) -- register_event end
 function RecvMessageLoop()
   bRecvLoop = true
   while true do -- data recv loop
-    local data, err = udp:receive()
+    local data, err = s_udp:receive()
     if data ~= nil and not err then
       -- if get udp data, send {send} the data.
       windower.send_command( "send " .. data )
