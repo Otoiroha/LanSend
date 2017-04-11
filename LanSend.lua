@@ -1,4 +1,4 @@
-_addon.version = '0.4.0'
+_addon.version = '0.4.5'
 _addon.name = 'LanSend'
 _addon.command = 'lansend'
 _addon.author = 'Otoiroha'
