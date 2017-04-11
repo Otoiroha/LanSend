@@ -45,13 +45,11 @@ s_bRecvLoop = false -- receiver loop flag
 windower.register_event('load',function ()
 
   if ( s_settings.port ~= nil ) then s_port = s_settings.port end -- load port from settings
-  if ( s_settings.players ~= nil ) then s_players = s_settings.players end -- load players info from settings
+  if ( s_settings.players ~= nil ) then
+    s_players = s_settings.players
+  end
   
   for i, v in pairs(s_players) do
-    -- name and acc reset to lower
-    v.name = v.name:lower()
-    v.acc  = v.acc:lower()
-    -- v.host = v.host:lower() -- host name isn't reset
     -- 1st account in Host manage the Host's UDP socket.
     if (s_h2a[v.host] == nil) then
       s_h2a[v.host] = v.acc
@@ -67,7 +65,7 @@ windower.register_event('load',function ()
   
   -- logined player's account check, if player's account registed [h2a], UDP socket open.
   for i, v in pairs(s_players) do
-    if ( p.name:lower() == v.name and s_h2a[v.host] == v.acc ) then
+    if ( p.name:lower() == v.name:lower() and s_h2a[v.host] == v.acc ) then
       s_udp = socket.udp()         -- UDP socket open
       s_udp:setsockname("*", s_port) -- set port
       s_udp:settimeout(0)          -- time out 0 -> no bind func
@@ -98,8 +96,8 @@ windower.register_event('addon command',function (...)
     local target = {}
     local myself = {}
     for i, v in pairs(s_players) do
-      if ( args[1]:lower() == v.name ) then target = v end
-      if ( windower.ffxi.get_player().name:lower() == v.name ) then myself = v end
+      if ( args[1]:lower() == v.name:lower() ) then target = v end
+      if ( windower.ffxi.get_player().name:lower() == v.name:lower() ) then myself = v end
     end
     
     -- if target's host is same my host, use {send}
